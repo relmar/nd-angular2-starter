@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>Angular 2 Boilerplate</title>
+
+    <script src="node_modules/systemjs/dist/system.js"></script>
+    <script src="node_modules/angular2/bundles/angular2.dev.js"></script>
+    <script src="node_modules/angular2/bundles/router.dev.js"></script>
+    <script src="node_modules/angular2/bundles/http.dev.js"></script>
+    <base href="/"></base>
+</head>
+<body>
+<app>Loading ...</app>
+
+<script>
+    System.config({
+        packages: {'app': {defaultExtension: 'js'}}
+    });
+    System.import('app/bootstrap');
+</script>
+</body>
+</html>

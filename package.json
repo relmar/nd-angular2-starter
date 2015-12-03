@@ -1,0 +1,42 @@
+{
+  "name": "nd-starter",
+  "version": "0.0.0",
+  "description": "An Angular 2 Webpack Starter kit featuring Angular 2",
+  "main": "",
+  "scripts": {
+    "tsc": "cp src/index.html public/index.html; tsc --project src --watch",
+    "server": "live-server ./public --port=8081",
+    "assets": "npm-assets public",
+    "start": "npm run server"
+  },
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "author": "Marcin Religa <marcin.religa@nitro-digital.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": ""
+  },
+  "assets": [
+    "node_modules/angular2/bundles/angular2.dev.js",
+    "node_modules/angular2/bundles/router.dev.js",
+    "node_modules/angular2/bundles/http.dev.js",
+    "node_modules/systemjs/dist/system.js"
+  ],
+  "homepage": "",
+  "dependencies": {
+    "@reactivex/rxjs": "5.0.0-alpha.7",
+    "angular2": "2.0.0-alpha.46",
+    "body-parser": "^1.14.1",
+    "express": "^4.13.3",
+    "systemjs": "^0.19.5"
+  },
+  "devDependencies": {
+    "live-server": "^0.8.2",
+    "typescript": "1.6.2",
+    "npm-assets": "0.1.0",
+    "css-loader": "^0.21.0",
+    "phantomjs": "^1.9.18"
+  }
+}
