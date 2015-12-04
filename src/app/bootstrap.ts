@@ -1,5 +1,5 @@
-import {bootstrap} from 'angular2/angular2';
-import {ROUTER_BINDINGS} from 'angular2/router';
+import {bootstrap, provide} from 'angular2/angular2';
+import {LocationStrategy, HashLocationStrategy, ROUTER_PROVIDERS} from 'angular2/router';
 import {App} from './app';
 
-bootstrap(App, [ROUTER_BINDINGS]);
+bootstrap(App, [ROUTER_PROVIDERS, provide(LocationStrategy, {useClass: HashLocationStrategy})]);

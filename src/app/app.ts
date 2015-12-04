@@ -1,63 +1,44 @@
 import {Component, View} from 'angular2/angular2';
-import {RouteConfig, ROUTER_DIRECTIVES, ROUTER_BINDINGS, RouterLink, RouterOutlet} from 'angular2/router';
+import {RouteConfig, RouteParams, ROUTER_DIRECTIVES, APP_BASE_HREF, ROUTER_BINDINGS} from 'angular2/router';
+import {HomeComponent} from './home/home';
+import {ProductDetailComponent} from './product/product';
+import {LoginPage} from './form/login';
 
 @Component({
-	selector: 'app'
+	selector: 'app',
 })
 
 @RouteConfig([
-  { path: '/',                  redirectTo: '/search' },
-  { path: '/search',            as: 'search',     component: HomeComponent },
-  { path: '/artist/:id',        as: 'artist',     component: AboutUsComponent }
+    {path: '/',        component: HomeComponent, as: 'Home'},
+    {path: '/product', component: ProductDetailComponent, as: 'ProductDetail'  }
 ])
 
 @View({
     template: `
-        <h1>Hi {{name}}</h1> <button (click)="sayMyName()">Say my name</button>
-        <li *ng-for="#hero of heroes">
-            {{ hero }}
-        </li>
-        <a [router-link]="['/search']">Search</a>
+        <h1>Hi <span #username>{{name}}</span></h1> 
+        
+        <input #inputvalue type="text">
+        <button (click)="displayName(username, inputvalue)">Update name</button>
+
+        <a [router-link]="['/Home']">Home</a>
+        <a [router-link]="['/ProductDetail']">Product Details</a>
         <router-outlet></router-outlet>
+        
+        <home></home>
+        <product></product>
+        <login-page></login-page>
     `,
-    directives: [ROUTER_DIRECTIVES, RouterLink, RouterOutlet]
+    directives: [ROUTER_DIRECTIVES]
 })
+
 export class App {
     public name:string;
-    public heroes = ['me', 'd', 'x'];
 
     constructor() {
-        this.name = 'sss';
-        
+        this.name = 'Some name';
     }
 
-    sayMyName() {
-        console.log('My name is', this.name)
-    }
-}
-
-
-// Home Component
-@Component({
-    selector: 'home',
-    template: '<h2>Welcome to <a href="http://www.codeandyou.com" target="_blank"> www.codeandyou.com </a></h2>',
-    styles: ['.home {background: red}'],
-
-})
-
-export class HomeComponent {
-    constructor() {
-        console.log('dw');
+    displayName(label, inputValue) {
+        label.innerHTML = inputValue.value;
     }
 }
-
-// About Us Component
-
-@Component({
-    selector: 'aboutus',
-    templateUrl: 'aboutUs.html'
-})
-export class AboutUsComponent {}
-    
-
-
